@@ -86,7 +86,7 @@ function getResult() {
 function addDecimal() {
   btnDot.addEventListener("click", () => {
     dot = btnDot.value;
-    if (onDisplay === "0") {
+    if (onDisplay === "0" || onDisplay === result) {
       arrNumber = ["0", dot];
     } else if (!arrNumber.includes(dot)) {
       arrNumber.push(dot);
