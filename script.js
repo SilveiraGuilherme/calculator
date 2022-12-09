@@ -69,6 +69,7 @@ function getResult() {
   btnResult.addEventListener("click", () => {
     if (operator === null) {
       onDisplay = onDisplay;
+      displayUpdate();
     } else {
       if (arrNumber === []) {
         num2 = num1;
@@ -77,10 +78,19 @@ function getResult() {
         arrNumber = [];
       }
       result = operate(+num1, +num2, operator);
-      onDisplay = result;
+      checkResult();
     }
-    displayUpdate();
   });
+}
+
+function checkResult() {
+  if (result.toString().length > 9) {
+    let arrResult = result.toString().split("");
+    arrResult.splice(9, Infinity, "..");
+    result = arrResult.join("");
+  }
+  onDisplay = result;
+  displayUpdate();
 }
 
 function addDecimal() {
