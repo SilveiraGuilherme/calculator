@@ -10,6 +10,7 @@ body {
   margin: 0;
   font-family: "Open sans";
 }
+
 .calculator {
   margin: 30px auto 20px auto;
   background-color: rgb(32, 32, 32);
@@ -27,6 +28,7 @@ body {
   height: 100%;
   gap: 5px;
 }
+
 .display-container {
   flex: 1;
   display: flex;
@@ -38,12 +40,14 @@ body {
   font-size: 3em;
   color: white;
 }
+
 .buttons {
   flex: 3;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 5px 5px;
   padding: 5px 10px 10px 10px;
+  min-width: 280px;
 }
 button {
   background-color: rgb(179, 172, 172);
