@@ -12,7 +12,7 @@ body {
 }
 .calculator {
   margin: 30px auto 20px auto;
-  background-color: #77787a;
+  background-color: rgb(32, 32, 32);
   width: 300px;
   height: 500px;
   padding: 5px 5px;
@@ -50,8 +50,7 @@ button {
   font-size: 1.8em;
   border: none;
   border-radius: 20px;
-  box-shadow: 2px 2px #141414;
-  padding: 2px;
+  box-shadow: 3px 3px black;
 }
 .buttons :hover {
   background-color: rgb(216, 216, 216);
