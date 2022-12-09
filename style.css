@@ -45,9 +45,9 @@ body {
   flex: 3;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
   gap: 5px 5px;
   padding: 5px 10px 10px 10px;
-  min-width: 280px;
 }
 button {
   background-color: rgb(179, 172, 172);
