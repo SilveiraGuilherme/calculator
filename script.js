@@ -67,14 +67,13 @@ function operatorChoice() {
 
 function getResult() {
   btnResult.addEventListener("click", () => {
-    if (operator === null) {
-      onDisplay = onDisplay;
-      displayUpdate();
-    } else {
-      if (arrNumber === []) {
-        num2 = num1;
+    if (operator) {
+      if (result) {
+        num1 = result;
+        console.log("Second: " + num1, num2, operator, result);
       } else {
         num2 = onDisplay;
+        console.log("Third: " + num1, num2, operator, result, result);
         arrNumber = [];
       }
       result = operate(+num1, +num2, operator);
@@ -85,17 +84,18 @@ function getResult() {
 
 function checkResult() {
   if (result.toString().length > 9) {
-    let arrResult = result.toString().split("");
+    const arrResult = result.toString().split("");
     arrResult.splice(9, Infinity, "..");
-    result = arrResult.join("");
+    onDisplay = arrResult.join("");
+  } else {
+    onDisplay = result.toString();
   }
-  onDisplay = result;
   displayUpdate();
 }
 
 function addDecimal() {
   btnDot.addEventListener("click", () => {
-    dot = btnDot.value;
+    const dot = btnDot.value;
     if (onDisplay === "0" || onDisplay === result) {
       arrNumber = ["0", dot];
     } else if (!arrNumber.includes(dot)) {
@@ -110,13 +110,12 @@ function addSign() {
   btnSign.addEventListener("click", () => {
     if (onDisplay === "0") {
       arrNumber = ["-", "0"];
-    } else if (onDisplay !== "0") {
-      if (!arrNumber.includes("-")) {
-        arrNumber.unshift("-");
-      } else {
-        arrNumber.shift();
-      }
+    } else if (!arrNumber.includes("-")) {
+      arrNumber.unshift("-");
+    } else {
+      arrNumber.shift();
     }
+
     onDisplay = arrNumber.join("");
     displayUpdate();
   });
@@ -126,7 +125,7 @@ function addPercent() {
   btnPercent.addEventListener("click", () => {
     if (!num1 || (num1 && arrNumber === [])) {
       onDisplay = (+onDisplay / 100).toString();
-    } else if (num1) {
+    } else {
       onDisplay = ((+num1 * +onDisplay) / 100).toString();
     }
     displayUpdate();
@@ -135,9 +134,7 @@ function addPercent() {
 
 function backspace() {
   btnBackspace.addEventListener("click", () => {
-    if (onDisplay === "0") {
-      onDisplay = onDisplay;
-    } else {
+    if (onDisplay !== "0") {
       if (arrNumber.length === 1 && arrNumber[0] !== "0") {
         arrNumber.splice(0, 1, "0");
       } else if (arrNumber.length === 0) {

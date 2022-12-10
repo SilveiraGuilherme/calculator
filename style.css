@@ -60,8 +60,9 @@ button {
   background-color: rgb(216, 216, 216);
 }
 button:active {
-  transform: translate(3px 3px);
   box-shadow: none;
+  border-top: 2px solid black;
+  border-left: 2px solid black;
 }
 .operators,
 .result {
