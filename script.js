@@ -54,8 +54,8 @@ function addToDisplay() {
 function operatorChoice() {
   btnOperators.forEach((btnOperator) => {
     btnOperator.addEventListener("click", () => {
-      if (!result) {
-        num1 = onDisplay;
+      if (result === null) {
+        num1 = arrNumber;
       } else {
         num1 = result;
       }
@@ -68,12 +68,10 @@ function operatorChoice() {
 function getResult() {
   btnResult.addEventListener("click", () => {
     if (operator) {
-      if (result) {
+      if (result !== null) {
         num1 = result;
-        console.log("Second: " + num1, num2, operator, result);
       } else {
         num2 = onDisplay;
-        console.log("Third: " + num1, num2, operator, result, result);
         arrNumber = [];
       }
       result = operate(+num1, +num2, operator);
@@ -115,7 +113,6 @@ function addSign() {
     } else {
       arrNumber.shift();
     }
-
     onDisplay = arrNumber.join("");
     displayUpdate();
   });
