@@ -1,4 +1,4 @@
-let arrNumber = [],
+let arrInput = [],
   onDisplay = "0",
   num1 = null,
   num2 = null,
@@ -33,18 +33,18 @@ function displayUpdate() {
 function addToDisplay() {
   btnNumbers.forEach((btnNumber) => {
     btnNumber.addEventListener("click", () => {
-      if (arrNumber.length < 9) {
-        if (arrNumber[0] === "0" && arrNumber[1] !== ".") {
-          arrNumber.shift();
+      if (arrInput.length < 9) {
+        if (arrInput[0] === "0" && arrInput[1] !== ".") {
+          arrInput.shift();
         } else if (
-          arrNumber[0] === "-" &&
-          arrNumber[1] === "0" &&
-          arrNumber[2] !== "."
+          arrInput[0] === "-" &&
+          arrInput[1] === "0" &&
+          arrInput[2] !== "."
         ) {
-          arrNumber.splice(1, 1);
+          arrInput.splice(1, 1);
         }
-        arrNumber.push(btnNumber.value);
-        onDisplay = arrNumber.join("");
+        arrInput.push(btnNumber.value);
+        onDisplay = arrInput.join("");
         displayUpdate();
       }
     });
@@ -55,12 +55,12 @@ function operatorChoice() {
   btnOperators.forEach((btnOperator) => {
     btnOperator.addEventListener("click", () => {
       if (result === null) {
-        num1 = arrNumber;
+        num1 = arrInput.join("");
       } else {
         num1 = result;
       }
       operator = btnOperator.value;
-      arrNumber = [];
+      arrInput = [];
     });
   });
 }
@@ -72,7 +72,7 @@ function getResult() {
         num1 = result;
       } else {
         num2 = onDisplay;
-        arrNumber = [];
+        arrInput = [];
       }
       result = operate(+num1, +num2, operator);
       checkResult();
@@ -95,11 +95,11 @@ function addDecimal() {
   btnDot.addEventListener("click", () => {
     const dot = btnDot.value;
     if (onDisplay === "0" || onDisplay === result) {
-      arrNumber = ["0", dot];
-    } else if (!arrNumber.includes(dot)) {
-      arrNumber.push(dot);
+      arrInput = ["0", dot];
+    } else if (!arrInput.includes(dot)) {
+      arrInput.push(dot);
     }
-    onDisplay = arrNumber.join("");
+    onDisplay = arrInput.join("");
     displayUpdate();
   });
 }
@@ -107,20 +107,20 @@ function addDecimal() {
 function addSign() {
   btnSign.addEventListener("click", () => {
     if (onDisplay === "0") {
-      arrNumber = ["-", "0"];
-    } else if (!arrNumber.includes("-")) {
-      arrNumber.unshift("-");
+      arrInput = ["-", "0"];
+    } else if (!arrInput.includes("-")) {
+      arrInput.unshift("-");
     } else {
-      arrNumber.shift();
+      arrInput.shift();
     }
-    onDisplay = arrNumber.join("");
+    onDisplay = arrInput.join("");
     displayUpdate();
   });
 }
 
 function addPercent() {
   btnPercent.addEventListener("click", () => {
-    if (!num1 || (num1 && arrNumber === [])) {
+    if (!num1 || (num1 && arrInput === [])) {
       onDisplay = (+onDisplay / 100).toString();
     } else {
       onDisplay = ((+num1 * +onDisplay) / 100).toString();
@@ -132,15 +132,15 @@ function addPercent() {
 function backspace() {
   btnBackspace.addEventListener("click", () => {
     if (onDisplay !== "0") {
-      if (arrNumber.length === 1 && arrNumber[0] !== "0") {
-        arrNumber.splice(0, 1, "0");
-      } else if (arrNumber.length === 0) {
+      if (arrInput.length === 1 && arrInput[0] !== "0") {
+        arrInput.splice(0, 1, "0");
+      } else if (arrInput.length === 0) {
         clear();
-        arrNumber.push("0");
+        arrInput.push("0");
       } else {
-        arrNumber.pop();
+        arrInput.pop();
       }
-      onDisplay = arrNumber.join("");
+      onDisplay = arrInput.join("");
     }
     displayUpdate();
   });
@@ -176,7 +176,7 @@ function divide(a, b) {
 }
 
 function clear() {
-  arrNumber = [];
+  arrInput = [];
   onDisplay = "0";
   num1 = null;
   num2 = null;
