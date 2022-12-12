@@ -169,19 +169,19 @@ function operate(a, b, op) {
 }
 
 function add(a, b) {
-  return parseFloat(a + b).toFixed(4);
+  return parseFloat(a + b);
 }
 function subtract(a, b) {
-  return parseFloat(a - b).toFixed(4);
+  return parseFloat(a - b);
 }
 function multiply(a, b) {
-  return parseFloat(a * b).toFixed(4);
+  return parseFloat(a * b);
 }
 function divide(a, b) {
   if (b === 0) {
     return "Error";
   }
-  return parseFloat(a / b).toFixed(4);
+  return parseFloat(a / b);
 }
 
 function clear() {
