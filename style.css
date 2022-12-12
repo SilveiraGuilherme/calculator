@@ -41,6 +41,13 @@ body {
   color: white;
 }
 
+button {
+  background-color: rgb(179, 172, 172);
+  font-size: 1.8em;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 3px 3px black;
+}
 .buttons {
   flex: 3;
   display: grid;
@@ -49,18 +56,11 @@ body {
   gap: 5px 5px;
   padding: 5px 10px 10px 10px;
 }
-button {
-  background-color: rgb(179, 172, 172);
-  font-size: 1.8em;
-  border: none;
-  border-radius: 20px;
-  box-shadow: 3px 3px black;
-}
 .buttons :hover {
   background-color: rgb(216, 216, 216);
 }
 button:active,
-button.active {
+.active {
   box-shadow: none;
   border-top: 2px solid black;
   border-left: 2px solid black;

@@ -128,8 +128,9 @@ function addSign() {
 
 function addPercent() {
   btnPercent.addEventListener("click", () => {
-    if (!num1 || (num1 && arrInput === [])) {
-      onDisplay = (+onDisplay / 100).toString();
+    if (!operator) {
+      arrInput = [(+onDisplay / 100).toString()];
+      onDisplay = arrInput.toString();
     } else {
       onDisplay = ((+num1 * +onDisplay) / 100).toString();
     }
