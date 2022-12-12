@@ -77,7 +77,8 @@ function getResult() {
   btnResult.addEventListener("click", () => {
     if (operator) {
       if (result !== null) {
-        num1 = result;
+        num1 = result.toString();
+        console.log(num1, num2, operator, result);
       } else {
         num2 = onDisplay;
         arrInput = [];
