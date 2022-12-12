@@ -59,7 +59,8 @@ button {
 .buttons :hover {
   background-color: rgb(216, 216, 216);
 }
-button:active {
+button:active,
+button.active {
   box-shadow: none;
   border-top: 2px solid black;
   border-left: 2px solid black;
@@ -69,6 +70,7 @@ button:active {
   background-color: #ee3e3e;
 }
 .operators:focus {
+  outline: none;
   background-color: white;
   color: #ee3e3e;
 }

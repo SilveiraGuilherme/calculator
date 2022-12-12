@@ -16,9 +16,17 @@ const btnNumbers = document.querySelectorAll(".numbers"),
   btnResult = document.querySelector(".result");
 
 document.addEventListener("keydown", (e) => {
-  const key = document.querySelector(`button[key='${e.key}']`);
-  if (key) {
-    key.click();
+  const btnKey = document.querySelector(`button[key='${e.key}']`);
+  if (btnKey) {
+    document.activeElement.blur();
+    btnKey.click();
+    btnKey.classList.add("active");
+    document.addEventListener("keyup", () => {
+      btnKey.classList.remove("active");
+    });
+    if (btnKey.classList.contains("operators")) {
+      btnKey.focus();
+    }
   }
 });
 
