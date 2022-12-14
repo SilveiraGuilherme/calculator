@@ -62,13 +62,24 @@ function addToDisplay() {
 function operatorChoice() {
   btnOperators.forEach((btnOperator) => {
     btnOperator.addEventListener("click", () => {
-      if (result === null) {
+      if (result === null && num1 === null) {
         num1 = arrInput.join("");
-      } else {
+      } else if (result === null && num1 !== null) {
+        if (arrInput.length === 0) {
+          num1;
+        } else {
+          num2 = arrInput.join("");
+          num1 = operate(+num1, +num2, operator).toString();
+          onDisplay = num1;
+        }
+      } else if (result !== null) {
         num1 = result;
+        num2 = arrInput.join("");
+        result = null;
       }
       operator = btnOperator.value;
       arrInput = [];
+      displayUpdate();
     });
   });
 }
@@ -78,7 +89,6 @@ function getResult() {
     if (operator) {
       if (result !== null) {
         num1 = result.toString();
-        console.log(num1, num2, operator, result);
       } else {
         num2 = onDisplay;
         arrInput = [];
@@ -117,14 +127,22 @@ function addSign() {
   btnSign.addEventListener("click", () => {
     if (onDisplay === "0") {
       arrInput = ["-", "0"];
-    } else if (!arrInput.includes("-")) {
-      arrInput.unshift("-");
     } else {
-      arrInput.shift();
+      if (arrInput.length === 0) {
+        arrInput = onDisplay.split("");
+        changeSign();
+        result = arrInput.join("");
+      } else {
+        changeSign();
+      }
     }
     onDisplay = arrInput.join("");
     displayUpdate();
   });
+}
+
+function changeSign() {
+  !arrInput.includes("-") ? arrInput.unshift("-") : arrInput.shift();
 }
 
 function addPercent() {
@@ -170,19 +188,19 @@ function operate(a, b, op) {
 }
 
 function add(a, b) {
-  return parseFloat(a + b);
+  return parseFloat((a + b).toFixed(6));
 }
 function subtract(a, b) {
-  return parseFloat(a - b);
+  return parseFloat((a - b).toFixed(6));
 }
 function multiply(a, b) {
-  return parseFloat(a * b);
+  return parseFloat((a * b).toFixed(6));
 }
 function divide(a, b) {
   if (b === 0) {
     return "Error";
   }
-  return parseFloat(a / b);
+  return parseFloat((a / b).toFixed(6));
 }
 
 function clear() {
