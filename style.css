@@ -63,7 +63,7 @@ button {
   grid-template-rows: repeat(5, 1fr);
   gap: 5px 5px;
   padding: 10px;
-  width: 280px;
+  max-width: 280px;
 }
 .buttons :hover {
   background-color: rgb(216, 216, 216);
