@@ -1,18 +1,33 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);
 
 * {
-  margin: 0;
   text-decoration: none;
   color: inherit;
-}
-body {
-  background-color: #eeeeee;
-  margin: 0;
   font-family: "Open sans";
 }
-
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #eeeeee;
+  height: 100vh;
+  margin: 0;
+  min-width: 330px;
+}
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  width: 100%;
+  height: 100%;
+}
 .calculator {
-  margin: 30px auto 20px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin: 0;
   background-color: rgb(32, 32, 32);
   width: 300px;
   height: 500px;
@@ -20,13 +35,6 @@ body {
   border: 2px solid black;
   border-radius: 10px;
   box-shadow: 8px 8px 4px #141414;
-}
-.calc-container {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-  gap: 5px;
 }
 
 .display-container {
@@ -81,11 +89,9 @@ button:active,
 }
 
 footer {
-  position: fixed;
-  bottom: 0;
-  width: 100vw;
   display: grid;
   grid-template-columns: 1fr 1fr;
+  width: 100%;
 }
 footer p {
   display: flex;
@@ -115,5 +121,11 @@ img {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+  }
+  footer p {
+    margin-bottom: 0;
+  }
+  footer address {
+    margin-bottom: 10px;
   }
 }
